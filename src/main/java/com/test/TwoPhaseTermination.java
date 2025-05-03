@@ -1,4 +1,4 @@
-package test;
+package com.test;
 
 //设计模式--两阶段终止
 //监控线程

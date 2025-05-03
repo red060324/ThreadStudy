@@ -1,4 +1,4 @@
-package test;
+package com.test;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;

@@ -1,7 +1,43 @@
-package test;
+package com.test;
+
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.Set;
+
+class MailBoxes{
+    private static Map<Integer,GuardedObject> boxes = new Hashtable<>();
+
+    private static int id = 1;
+
+    private static synchronized int generatedId(){
+        return id++;
+    }
+
+    public static GuardedObject createGuardedObject(){
+        GuardedObject guardedObject = new GuardedObject(generatedId());
+        boxes.put(guardedObject.getId(),guardedObject);
+        return guardedObject;
+    }
+
+    public static Set<Integer> getIds(){
+        return boxes.keySet();
+    }
+}
 
 //设计模式 ：保护性暂停
 public class GuardedObject {
+
+    //标识 GuardedObject
+    private int id;
+
+    public GuardedObject(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     private Object response;
 
     //获取结果
